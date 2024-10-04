@@ -1,0 +1,64 @@
+#include<stdio.h>
+#define max 10
+
+ struct item {
+  int coeff;
+  int exp;
+ };
+
+ struct poly {
+   struct item Ply[max];
+   int terms;
+ };
+
+ struct poly create_poly(void);
+ void display_poly(struct poly);
+
+ void main() {
+  struct poly P;
+  int i,n;
+  clrscr();
+
+  P=create_poly();
+  display_poly(P);
+  getch();
+ }
+
+ struct poly create_poly(void) {
+  struct poly P;
+  int i,n;
+  printf("Enter no.of terms of polynomial :");
+  scanf("%d",&n);
+  P.terms = n;
+  printf("Enter %d terms of polynomial :",n);
+
+  for(i=0;i<n;i++) {
+   printf("\n Enter %d term cofficient and exponent value :",i+1);
+   scanf("%d%d",&P.Ply[i].coeff, &P.Ply[i].exp);
+  }
+  return(P);
+ }
+
+ void display_poly(struct poly P) {
+  int i;
+  for(i=0;i<P.terms;i++) {
+   if(P.Ply[i].exp>0) {
+    if(P.Ply[i].coeff==0){
+       continue;
+    } else if(P.Ply[i].coeff<0) {
+     printf("\b\b");
+     printf("%dX^%d + ",P.Ply[i].coeff,P.Ply[i].exp);
+    } else {
+     printf("%dX^%d + ",P.Ply[i].coeff,P.Ply[i].exp);
+    }
+  } else if(P.Ply[i].coeff<0) {
+    printf("\b\b");
+    printf("%d",P.Ply[i].coeff);
+  } else if(P.Ply[i].coeff>0) {
+    printf("%d",P.Ply[i].coeff);
+  } else {
+    printf("\b\b");
+  }}
+  if(P.Ply[P.terms-1].exp!=0)
+     printf("\b\b ");
+  }

@@ -1,0 +1,55 @@
+//to display the diagonal elements in 2D Array
+#include<stdio.h>
+
+void main() {
+   int j,i,k,r1,c1,arr[10][10];
+   int display = 0;
+   clrscr();
+   printf("Enter the Number of rows and columns :");
+   scanf("%d%d",&r1,&c1);
+   printf("Elements of an array :");
+   //input of an array
+   for(i=1;i<=r1;i++) {
+    for(j=1;j<=c1;j++) {
+       scanf("%d",&arr[i][j]);
+    }
+   }
+
+   //display array element
+   printf("Array Elements :");
+   for(i=1;i<=r1;i++) {
+    printf("\n");
+    for(j=1; j<=c1;j++) {
+     printf("%4d",arr[i][j]);
+    }
+   }
+
+   //logic to display upper diagonal elements
+   printf("\nUpper Diagonal elements are :");
+   for(i=1;i<=r1;i++) {
+    printf("\n");
+    for(j=1;j<=c1;j++) {
+     if(i==j) {
+      display += arr[i][j];
+     }
+    }
+     printf("%d",display);
+     display = 0;
+   }
+
+   //lower diagonal elements
+   printf("\nLower Diagonal elements are :");
+   for(i=1;i<=r1;i++) {
+    printf("\n");
+    for(j=c1;j>=1;j--) {
+     for(k=r1;k>=1;k--) {
+       if(k==j) {
+       display += arr[i][j];
+      }
+     }
+    }
+   printf("%d",display);
+   display = 0;
+   }
+   getch();
+}
