@@ -2,11 +2,12 @@
 #define  max 10
 void input_array(int[],int);
 void print_array(int[],int);
-void bubble_sort(int[],int) ;
+void selection_sort(int[],int) ;
 
 void main() {
   int arr[10],n,i,j,k,temp;
   clrscr();
+
   printf("Enter the size of an array :");
   scanf("%d",&n);
 
@@ -16,9 +17,10 @@ void main() {
   printf("\n Before sorting :");
   //printing array elements
   print_array(arr,n);
-  //calling of bubble sort
-  bubble_sort(arr,n);
-  printf("\n After Sorting : ");
+  //calling of selection sort
+  selection_sort(arr,n);
+
+  printf("\n Sorting by using selection sort: ");
   print_array(arr,n);
 
   getch();
@@ -41,17 +43,19 @@ void main() {
   }
 
 
-  //logic for bubble sort
-  void bubble_sort(int arr[],int n) {
-   int i,j,temp;
+  //logic for selection sort
+  void selection_sort(int arr[],int n) {
+   int i,j,smallest,temp;
    for(i=0;i<n-1;i++) {
-     for(j=0;j<n-i-1;j++) {
-       if(arr[j] > arr[j+1]) {
-	//swapping
-	temp = arr[j];
-	arr[j] = arr[j+1];
-	arr[j+1] = temp;
-       }
+     smallest = i;
+    for(j = i+1;j<n;j++) {
+     if(arr[j] < arr[smallest]) {
+       smallest = j;
      }
     }
+    //swapping
+    temp = arr[smallest];
+    arr[smallest] = arr[i];
+    arr[i]=temp;
+   }
   }
