@@ -1,0 +1,70 @@
+<html>
+<head>
+	<title>Text Input Controls</title>
+</head>
+<body>
+	<form>
+		<input type="text" name="Suffix" value="Ms/Mr" readonly ><br/>
+		<label for="fname">First Name : </label>
+		<input type="text" name="fname" size=30 placeholder="Fill name in capital" maxlength=5> <br/>
+		<label for="fname">Password : </label>
+		<input type="password" placeholder="Enter your password"><br>
+		
+		<textarea rows=10 cols=50 name="description">Please enter your address</textarea><br><br>
+		
+		<p>Check box</p>
+		<input type="checkbox" name="cbox" checked>Maths<br>
+		<input type="checkbox">Physics<br>
+		<input type="checkbox">Biology<br>
+		<input type="checkbox">Chemestry<br>
+		
+		<p>Radio Buttons</p>
+		<input type="radio" id="html" name="fav_language" value="HTML">
+		<label for="html">HTML</label><br>
+		<input type="radio" id="css" name="fav_language" value="CSS">
+		<label for="css">CSS</label><br>
+		<input type="radio" id="javascript" name="fav_language" value="JavaScript">
+		<label for="javascript">JavaScript</label>
+		
+		<p>Select options</p>
+		<select name="dropdown" autofocus multiple size=2>
+			<option value="Maths">Maths</option>
+			<option value="Physics">Physics</option>
+			<option value="Chemestry">Chemestry</option>
+			<option value="Biology">Biology</option>
+		</select><br>
+
+		<p>File upload</p>
+		<input type="file" name="fileupload"><br>
+
+		<p>Submit Reset Image Button</p>
+		<input type="submit" name="submit" value="Submit"><br>
+		<input type="reset" name="reset" value="Reset"><br>
+		<input type="button" name="button" value="OK"><br>
+		<button type="button" onclick="msg()" >Click Me!</button><br>
+		<input type="image" src="img.webp" height='50' onclick="msg()"><br>
+
+		
+		<p>Date</p>
+		<label for="birthday">Birthday:</label>
+		<input type="date" id="birthday" name="birthday">
+		<input type="submit" value="Save my Birthday"><br>
+
+		
+		<p>Number control</p>
+		<label for="quantity">Quantity : </label>
+		<input type="number" name="quantity" id="quantity" min="0" max="100" step="10" value="30"><br>
+				
+
+		<p>Range control</p>
+		<input type="range">
+		<input type="reset" value="Reset">
+		<script>
+			function msg() {
+				alert("hello");
+			}
+		</script>
+
+	</form>
+</body>
+</html>
