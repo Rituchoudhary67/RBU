@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>javascript></title>
+</head>
+<body>
+	<h1 id="demo"></h1>
+	<input type="text" placeholder="Enter your name" id="input">
+	<button onClick="printName()">Print Name</button>
+	<script>
+		const output = document.getElementById("demo");
+		const arr = [1,2,3,4,5];
+		const cars = ["BMW","Toyota","Thar","Tata"];
+		for(let i=0; i<arr.length;i++) {
+			output.innerHTML += "Number at " + i + " is " + arr[i] + "<br>";
+		}
+		let i=2;
+		let len = cars.length;
+		let text = "";
+		for(; i<len; i++) {
+			text += cars[i] + "<br>";
+		}
+		output.innerHTML += text;
+
+		function mult(a,b,c) {
+			return a*b*c;
+		}		
+		let ans = mult(2,3,4);
+		output.innerHTML += ans + "<br>";
+		
+		let input = document.getElementById("input");
+		function printName() {
+			output.innerHTML += input.value + "<br>";
+		}
+	</script>
+</body>
+</html>
