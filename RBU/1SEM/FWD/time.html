@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>TimeFormat</title>
+</head>
+<body>
+
+	<script>
+		const timeInMilliseconds = Date.now();
+		console.log(timeInMilliseconds); 
+
+		const time = new Date;
+
+		//get day of month
+		const date = time.getDate();
+		console.log(date);
+
+		//get day of year
+		const year = time.getFullYear();
+		console.log(year);
+
+		//get day of utc
+		const utcDate = time.getUTCDate();
+		console.log(utcDate);
+
+		const event = new Date('feb 19, 2020 23:15:30');
+		//set the date
+		event.setDate(15);
+		console.log(event.getDate());
+
+		//only 28 days 
+		event.setDate(35);
+
+		console.log(event.getDate());
+	</script>
+</body>
+</html>
