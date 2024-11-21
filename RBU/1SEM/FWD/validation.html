@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Form Validation</title>
+</head>
+<body>
+
+	<form onsubmit="validateForm()">
+	UserName : <input type="text" id="username" placeholder="Enter your username...">
+	PassWord : <input type="password" id="password" placeholder="Enter your password..">
+	<input type="submit" value="Submit">
+	</form>
+	<script>
+		function validateForm() {
+			console.log("hello");
+			var username = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+
+			if(username ==="" || password ==="") {
+				alert("please fill in all fields");
+				return false;
+			} else {
+			alert("form submitted" + " Your username is :" + username);
+			}
+		}
+	</script>
+</body>
+</html>
