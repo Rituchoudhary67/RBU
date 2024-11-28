@@ -1,0 +1,73 @@
+<html>
+<head>
+	<title>Welcome</title>
+	
+	<style>
+		* {
+			margin:10px;
+		}
+		form {
+			border:1px solid black;
+			width:80%;
+			text-align:center;
+		}
+		header {
+		 background:blue;
+		 height:50px;
+		 width:500px;
+		 text-align:center;
+		 color:white;
+		 margin-left:25%;
+		}
+ div {
+	border:1px solid black;
+}
+	</style>
+</head>
+<body>
+	<form>
+		<header>
+		<h1>Result Analysis</h1>
+		</header>
+		<label for="username">Enter your First Name</label>
+		<input type="textbox" id="firstName" name="username" placeholder="Textbox" max="5"><br>
+		<label for="dropdown">Marks Scored</label>
+		<select name="dropdown" onchange=studentMarks() id="selectNum">
+			<option > Dropdown list with marks</option>
+			<option>85</option>
+			<option>30</option>
+			<option>78</option>
+			<option>25</option>
+			<option>60</option>
+		</select><br>
+		<div id="studentPass">Student Passesd : 3</div>
+		<button id="result" onclick=studentResult()>Result</button>
+	</form>
+
+	<script>
+		var firstName = document.getElementById("firstName");
+		var selectedNum = document.getElementById("selectNum");
+		var result = document.getElementById("result");
+		var studentPass = document.getElementById("studentPass");
+		var marks = selectedNum.value;
+
+		console.log(firstName.value);
+		function studentMarks() {
+			var marks = selectedNum.value;
+			//console.log("hello");
+			alert(`Hello ${firstName.value}! you have scored ${marks} marks`);
+		}
+
+		function studentResult() {
+			if(marks > 35 ) {
+			   studentPass.innerHTML = "<h1>Student Passesd : 3</h1>";
+   			   console.log("Student Passesd : 3");
+			} else {
+			   studentPass.innerHTML = "<h1>Student Failed : 2</h1>";
+			   console.log("Student Passesd : 2");	
+			}
+		}
+
+	</script>
+</body>
+</html>
