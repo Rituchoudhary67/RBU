@@ -1,3 +1,4 @@
 hello
 
+Practical 3 and 4 : https://colab.research.google.com/drive/1U6ca701-tAUMzU1NUJsKg3XKOfHZAYD7
 Practical 5 Google Colab link : https://colab.research.google.com/drive/14k405H8DtuwMGKBUwrSYzNZPhGNz0qsJ#scrollTo=BVZAUHRNvgpx
