@@ -1,0 +1,210 @@
+📘 DBMS Notes: Relational Database Design, Functional Dependency, and Normalization
+📍 Part 1: Relational Database Design & Functional Dependencies
+✅ 1. Common Problems in Database Design
+Null values: Waste storage, unclear meaning.
+
+Redundancy: Repetition leads to inconsistency.
+
+Repeated columns: Violate atomicity.
+
+Update anomalies: Changes must be made in multiple places.
+
+➡ These problems can be solved by decomposition using functional dependencies.
+
+✅ 2. Functional Dependency (FD)
+A functional dependency (FD) is a constraint between two sets of attributes.
+
+Denoted as: X -> Y (Y is functionally dependent on X)
+
+X is called the determinant.
+
+Example:
+
+nginx
+Copy
+Edit
+Emp_ID → Emp_Name
+Given the same Emp_ID, the Emp_Name must also be the same.
+
+✅ 3. Types of Functional Dependencies
+
+Type	Description	Example
+Full FD	Y depends on the whole of X (composite key).	Roll_No, Subject → Marks
+Partial FD	Y depends on part of a composite key.	Roll_No → Student_Name
+Transitive FD	X → Y and Y → Z implies X → Z	Roll → Marks → Grade
+Multivalued FD	X determines multiple values of Y.	Course_ID →→ Topics
+Trivial FD	Y is a subset of X.	A, B → B
+✅ 4. Armstrong’s Axioms (Inference Rules)
+Reflexivity: If Y ⊆ X, then X → Y
+
+Augmentation: If X → Y, then XZ → YZ
+
+Transitivity: If X → Y and Y → Z, then X → Z
+
+Additivity (Union): X → Y and X → Z ⇒ X → YZ
+
+Decomposition: X → YZ ⇒ X → Y and X → Z
+
+Pseudotransitivity: If X → Y and YZ → W, then XZ → W
+
+✅ 5. Attribute Closure (X⁺)
+Used to find all attributes that can be functionally derived from X.
+
+Steps:
+
+Start with X⁺ = X
+
+Apply FDs where LHS ⊆ X⁺
+
+Add RHS to X⁺
+
+Repeat until stable
+
+Example:
+
+mathematica
+Copy
+Edit
+F = {A → B, B → C}
+A⁺ = {A} → {A, B} → {A, B, C}
+✅ 6. Candidate Keys
+A minimal set of attributes that uniquely identify all tuples.
+
+Must determine all other attributes (superkey) and be minimal.
+
+Steps:
+
+Find attributes not on RHS of any FD.
+
+Test combinations and compute closure.
+
+Minimal combinations that determine all attributes are candidate keys.
+
+Example:
+
+mathematica
+Copy
+Edit
+R(A,B,C,D), F = {A → C, B → D}
+Candidate Key = AB
+📍 Part 2: Closure of FDs, Canonical Cover, Normalization
+✅ 1. Closure of a Set of FDs (F⁺)
+F⁺ is the set of all FDs that can be logically derived from F using Armstrong’s axioms.
+
+Example:
+
+mathematica
+Copy
+Edit
+F = {A → B, B → C} ⟹ F⁺ = {A → B, B → C, A → C}
+✅ 2. Canonical Cover (Minimal Cover)
+A simplified version of F with:
+
+No redundant FDs
+
+No extraneous attributes
+
+Single attributes on RHS
+
+Steps:
+
+Split RHS: A → BC → A → B and A → C
+
+Remove extraneous attributes from LHS
+
+Remove redundant FDs by checking closures
+
+Example:
+
+nginx
+Copy
+Edit
+F = {A → BC, A → B, AB → C}
+⇒ Canonical cover = {A → B, B → C}
+🔁 Normalization
+🟩 1NF (First Normal Form)
+Condition:
+
+All attributes must be atomic
+
+No repeating groups or sets
+
+Fix:
+
+Break multi-valued attributes into separate rows.
+
+🟨 2NF (Second Normal Form)
+Conditions:
+
+Must be in 1NF
+
+No partial dependency
+
+Fix:
+
+Remove non-key attributes that depend only on part of a composite key into separate tables.
+
+🟦 3NF (Third Normal Form)
+Conditions:
+
+Must be in 2NF
+
+No transitive dependency
+
+Fix:
+
+Move transitively dependent attributes to a new relation.
+
+📋 Summary Table
+
+Normal Form	Key Condition
+1NF	No multi-valued or composite attributes
+2NF	1NF + No partial dependency
+3NF	2NF + No transitive dependency
+BCNF	Every determinant is a candidate key
+🧪 Case Study 1: Student_Course_Result
+From UNF → 1NF → 2NF → 3NF
+
+Relations in 3NF:
+
+STUDENT(StudentID, Name, DOB)
+
+COURSE(CourseID, Name, Duration)
+
+RESULT(StudentID, CourseID, Marks)
+
+GRADE(Marks, Grade)
+
+🧪 Case Study 2: ClientRental
+Functional Dependencies:
+
+ClientID → ClientName
+
+PropertyID → Address, OwnerID
+
+OwnerID → OwnerName
+
+3NF Tables:
+
+CLIENT(ClientID, ClientName)
+
+PROPERTY(PropertyID, Address, OwnerID)
+
+OWNER(OwnerID, OwnerName)
+
+RENTAL(ClientID, PropertyID, RentStart, RentEnd)
+
+🧪 Case Study 3: Order Processing
+Initial Table (UNF):
+
+Order has multiple items
+
+Normalized:
+
+ORDER(OrderID, CustomerName, Date)
+
+PRODUCT(ProductID, Name, UnitPrice)
+
+ORDER_LINE(OrderID, ProductID, Qty)
+
+BILL(ProductID, Qty, Price)
