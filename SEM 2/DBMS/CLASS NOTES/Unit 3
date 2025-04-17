@@ -1,13 +1,10 @@
 📘 DBMS Notes: Relational Database Design, Functional Dependency, and Normalization
 📍 Part 1: Relational Database Design & Functional Dependencies
 ✅ 1. Common Problems in Database Design
-Null values: Waste storage, unclear meaning.
-
-Redundancy: Repetition leads to inconsistency.
-
-Repeated columns: Violate atomicity.
-
-Update anomalies: Changes must be made in multiple places.
+  Null values: Waste storage, unclear meaning.
+  Redundancy: Repetition leads to inconsistency.
+  Repeated columns: Violate atomicity.
+  Update anomalies: Changes must be made in multiple places.
 
 ➡ These problems can be solved by decomposition using functional dependencies.
 
